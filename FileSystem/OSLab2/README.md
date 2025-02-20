@@ -147,7 +147,6 @@ To run the file system project locally:
 
 - **Felix Cenusa**
 - **Yamen Chams**  
-    BTH Software Engineers
 
 ## Additional Resources
 
