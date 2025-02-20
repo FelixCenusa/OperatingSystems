@@ -26,7 +26,7 @@
 ## Table of Contents
 
 ### Lab 1: Processes, Threads, and Memory Systems
-- [Project Overview](#project-overview)
+- [Project Overview](#project-overview-lab-1)
 - [Lab Tasks](#lab-tasks)
     - [Part 1: Processes and Threads](#part-1-processes-and-threads)
     - [Part 2: Memory Systems](#part-2-memory-systems)
@@ -38,20 +38,20 @@
 - [Additional Resources](#additional-resources)
 
 ### Lab 2: File Systems
-- [Project Overview](#project-overview-1)
+- [Project Overview](#project-overview-of-lab-2)
 - [System Design](#system-design)
-    - [Overview](#overview-1)
-    - [Key Components](#key-components-1)
-    - [Disk Management](#disk-management-1)
-- [Implementations](#implementations-1)
-    - [Formatting the Disk](#formatting-the-disk-1)
-    - [File Operations](#file-operations-1)
-    - [Directory Management](#directory-management-1)
-    - [Copying and Moving Files](#copying-and-moving-files-1)
-    - [Permissions](#permissions-1)
-- [Data Structures](#data-structures-1)
-    - [File Allocation Table (FAT)](#file-allocation-table-fat-1)
-    - [Directory Tables](#directory-tables-1)
+    - [Overview](#overview)
+    - [Key Components](#key-components)
+    - [Disk Management](#disk-management)
+- [Implementations](#implementations)
+    - [Formatting the Disk](#formatting-the-disk)
+    - [File Operations](#file-operations)
+    - [Directory Management](#directory-management)
+    - [Copying and Moving Files](#copying-and-moving-files)
+    - [Permissions](#permissions)
+- [Data Structures](#data-structures)
+    - [File Allocation Table (FAT)](#file-allocation-table-fat)
+    - [Directory Tables](#directory-tables)
 - [Getting Started](#getting-started-1)
 - [Contributors](#contributors-1)
 - [Additional Resources](#additional-resources-1)
@@ -174,29 +174,23 @@ To run the project locally:
 
 1. **Clone the Repository:**
     
-    bash
-    
-    Copy
-    
-    `git clone https://your-repo-url.git`
+    ```bash
+    git clone https://your-repo-url.git
+    ```
     
 2. **Compile the Code:**
     
     - Ensure you have a C compiler with pthread support. For example:
         
-        bash
-        
-        Copy
-        
-        `gcc -pthread -o lab1 main.c`
+        ```bash
+        gcc -pthread -o lab1 main.c
+        ```
         
 3. **Run the Executable:**
     
-    bash
-    
-    Copy
-    
-    `./lab1`
+    ```bash
+    ./lab1
+    ```
     
 4. **Review the PDF Report:**
     
@@ -209,8 +203,7 @@ To run the project locally:
 
 ## Additional Resources
 
-- Detailed PDF Report on Solutions for Part 1 and Part 2 avaliable in this repo
-
+- Detailed PDF Report on Solutions for Part 1 and Part 2 available in this repo
 
 
 
@@ -297,28 +290,22 @@ To run the file system project locally:
 
 1. **Clone the Repository:**
     
-    bash
-    
-    Copy
-    
-    `git clone https://your-repo-url.git`
+    ```bash
+    git clone https://your-repo-url.git
+    ```
     
 2. **Compile the Code:**
     - Ensure you have a C compiler installed. For example:
         
-        bash
-        
-        Copy
-        
-        `gcc -o lab2 filesys.c`
+        ```bash
+        gcc -o lab2 filesys.c
+        ```
         
 3. **Run the Executable:**
     
-    bash
-    
-    Copy
-    
-    `./lab2`
+    ```bash
+    ./lab2
+    ```
     
 4. **Review the PDF Report:**
     - Detailed explanations and performance analyses are available in the PDF report within this repository.
@@ -331,4 +318,4 @@ To run the file system project locally:
 
 ## Additional Resources
 
-- Detailed PDF Report on File System Implementation avaliable in this repo
+- Detailed PDF Report on File System Implementation available in this repo
