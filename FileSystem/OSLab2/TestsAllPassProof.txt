@@ -1,0 +1,744 @@
+root@MAC-KILLER-V2:/mnt/c/Users/felix/Desktop/OSLab2/lab2_code/lab2_code# ./test1
+FS::FS()... Creating file system
+Creating and starting shell...
+================================================================================
+\ / \ / \ / \ / \ / \ / \     new test session     / \ / \ / \ / \ / \ / \ / \ /
+================================================================================
+Starting test sequence...
+================================================================================
+Task 1 ...
+----------------------------------------
+Testing format()...
+FS::format()
+FS::formatDirectoryTable()
+Executing ls
+Expected output:
+name     size
+Actual output:
+name              type       accessrights     size
+Executing pwd
+Expected output:
+/
+Actual output:
+/
+... done format()
+----------------------------------------
+Testing create(f1)...
+FS::create(f1)
+Enter text (press Enter twice to finish):
+Expected output:
+name     size
+f1       16
+Actual output:
+name              type       accessrights     size
+f1                file       rw-              16
+Testing create() with large file...
+FS::create(f4129)
+Enter text (press Enter twice to finish):
+Expected output:
+name     size
+f1       16
+f4129    4129
+Actual output:
+name              type       accessrights     size
+f1                file       rw-              16
+f4129             file       rw-              4129
+... done create()
+----------------------------------------
+Testing cat(f1)...
+Expected output:
+hej heja hejare
+Actual output:
+hej heja hejare
+--------
+Try to cat a non-existing file...
+Expected output:
+... some kind of error message
+Actual output:
+Error: File doesn't exist.
+Error: cat f2 failed, error code -1
+... done cat()
+----------------------------------------
+Checking long file names...
+Formatting disk ...
+FS::format()
+FS::formatDirectoryTable()
+55 char names should work...
+FS::create(AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcde)
+Enter text (press Enter twice to finish):
+Expected output:
+name     size
+AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcde  16
+Actual output:
+name              type       accessrights     size
+AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdefile       rw-              16
+56 char names should give an error...
+Expected output:
+ ... some error message
+name     size
+AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcde  16
+Actual output:
+FS::create(AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdeX)
+Error: File name too long
+Error: create AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdeX failed, error code -1
+name              type       accessrights     size
+AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdefile       rw-              16
+----------------------------------------
+Testing the number of files that fit in a directory ...
+Formatting disk ...
+FS::format()
+FS::formatDirectoryTable()
+BLOCK_SIZE = 4096, sizeof(dir_entry) = 64, 64 dir_entries per disk block.
+Creating 64 files in the root directory...
+FS::create(f0)
+Enter text (press Enter twice to finish):
+FS::create(f1)
+Enter text (press Enter twice to finish):
+FS::create(f2)
+Enter text (press Enter twice to finish):
+FS::create(f3)
+Enter text (press Enter twice to finish):
+FS::create(f4)
+Enter text (press Enter twice to finish):
+FS::create(f5)
+Enter text (press Enter twice to finish):
+FS::create(f6)
+Enter text (press Enter twice to finish):
+FS::create(f7)
+Enter text (press Enter twice to finish):
+FS::create(f8)
+Enter text (press Enter twice to finish):
+FS::create(f9)
+Enter text (press Enter twice to finish):
+FS::create(f10)
+Enter text (press Enter twice to finish):
+FS::create(f11)
+Enter text (press Enter twice to finish):
+FS::create(f12)
+Enter text (press Enter twice to finish):
+FS::create(f13)
+Enter text (press Enter twice to finish):
+FS::create(f14)
+Enter text (press Enter twice to finish):
+FS::create(f15)
+Enter text (press Enter twice to finish):
+FS::create(f16)
+Enter text (press Enter twice to finish):
+FS::create(f17)
+Enter text (press Enter twice to finish):
+FS::create(f18)
+Enter text (press Enter twice to finish):
+FS::create(f19)
+Enter text (press Enter twice to finish):
+FS::create(f20)
+Enter text (press Enter twice to finish):
+FS::create(f21)
+Enter text (press Enter twice to finish):
+FS::create(f22)
+Enter text (press Enter twice to finish):
+FS::create(f23)
+Enter text (press Enter twice to finish):
+FS::create(f24)
+Enter text (press Enter twice to finish):
+FS::create(f25)
+Enter text (press Enter twice to finish):
+FS::create(f26)
+Enter text (press Enter twice to finish):
+FS::create(f27)
+Enter text (press Enter twice to finish):
+FS::create(f28)
+Enter text (press Enter twice to finish):
+FS::create(f29)
+Enter text (press Enter twice to finish):
+FS::create(f30)
+Enter text (press Enter twice to finish):
+FS::create(f31)
+Enter text (press Enter twice to finish):
+FS::create(f32)
+Enter text (press Enter twice to finish):
+FS::create(f33)
+Enter text (press Enter twice to finish):
+FS::create(f34)
+Enter text (press Enter twice to finish):
+FS::create(f35)
+Enter text (press Enter twice to finish):
+FS::create(f36)
+Enter text (press Enter twice to finish):
+FS::create(f37)
+Enter text (press Enter twice to finish):
+FS::create(f38)
+Enter text (press Enter twice to finish):
+FS::create(f39)
+Enter text (press Enter twice to finish):
+FS::create(f40)
+Enter text (press Enter twice to finish):
+FS::create(f41)
+Enter text (press Enter twice to finish):
+FS::create(f42)
+Enter text (press Enter twice to finish):
+FS::create(f43)
+Enter text (press Enter twice to finish):
+FS::create(f44)
+Enter text (press Enter twice to finish):
+FS::create(f45)
+Enter text (press Enter twice to finish):
+FS::create(f46)
+Enter text (press Enter twice to finish):
+FS::create(f47)
+Enter text (press Enter twice to finish):
+FS::create(f48)
+Enter text (press Enter twice to finish):
+FS::create(f49)
+Enter text (press Enter twice to finish):
+FS::create(f50)
+Enter text (press Enter twice to finish):
+FS::create(f51)
+Enter text (press Enter twice to finish):
+FS::create(f52)
+Enter text (press Enter twice to finish):
+FS::create(f53)
+Enter text (press Enter twice to finish):
+FS::create(f54)
+Enter text (press Enter twice to finish):
+FS::create(f55)
+Enter text (press Enter twice to finish):
+FS::create(f56)
+Enter text (press Enter twice to finish):
+FS::create(f57)
+Enter text (press Enter twice to finish):
+FS::create(f58)
+Enter text (press Enter twice to finish):
+FS::create(f59)
+Enter text (press Enter twice to finish):
+FS::create(f60)
+Enter text (press Enter twice to finish):
+FS::create(f61)
+Enter text (press Enter twice to finish):
+FS::create(f62)
+Enter text (press Enter twice to finish):
+FS::create(f63)
+Enter text (press Enter twice to finish):
+Expected output:
+name     size
+f0       16
+f1       16
+f2       16
+...      ...
+f62      16
+f63      16
+Actual output:
+name              type       accessrights     size
+f0                file       rw-              16
+f1                file       rw-              16
+f2                file       rw-              16
+f3                file       rw-              16
+f4                file       rw-              16
+f5                file       rw-              16
+f6                file       rw-              16
+f7                file       rw-              16
+f8                file       rw-              16
+f9                file       rw-              16
+f10               file       rw-              16
+f11               file       rw-              16
+f12               file       rw-              16
+f13               file       rw-              16
+f14               file       rw-              16
+f15               file       rw-              16
+f16               file       rw-              16
+f17               file       rw-              16
+f18               file       rw-              16
+f19               file       rw-              16
+f20               file       rw-              16
+f21               file       rw-              16
+f22               file       rw-              16
+f23               file       rw-              16
+f24               file       rw-              16
+f25               file       rw-              16
+f26               file       rw-              16
+f27               file       rw-              16
+f28               file       rw-              16
+f29               file       rw-              16
+f30               file       rw-              16
+f31               file       rw-              16
+f32               file       rw-              16
+f33               file       rw-              16
+f34               file       rw-              16
+f35               file       rw-              16
+f36               file       rw-              16
+f37               file       rw-              16
+f38               file       rw-              16
+f39               file       rw-              16
+f40               file       rw-              16
+f41               file       rw-              16
+f42               file       rw-              16
+f43               file       rw-              16
+f44               file       rw-              16
+f45               file       rw-              16
+f46               file       rw-              16
+f47               file       rw-              16
+f48               file       rw-              16
+f49               file       rw-              16
+f50               file       rw-              16
+f51               file       rw-              16
+f52               file       rw-              16
+f53               file       rw-              16
+f54               file       rw-              16
+f55               file       rw-              16
+f56               file       rw-              16
+f57               file       rw-              16
+f58               file       rw-              16
+f59               file       rw-              16
+f60               file       rw-              16
+f61               file       rw-              16
+f62               file       rw-              16
+f63               file       rw-              16
+--------
+Adding one more file should give an error...
+Expected output:
+... some kind of error message
+Actual output:
+FS::create(fx)
+Error: Not enough space on disk
+Error: create fx failed, error code -1
+----------------------------------------
+... Task 1 done
+================================================================================
+Exiting shell...
+root@MAC-KILLER-V2:/mnt/c/Users/felix/Desktop/OSLab2/lab2_code/lab2_code# ./test2
+FS::FS()... Creating file system
+Creating and starting shell...
+================================================================================
+\ / \ / \ / \ / \ / \ / \     new test session     / \ / \ / \ / \ / \ / \ / \ /
+================================================================================
+Starting test sequence...
+================================================================================
+Task 2 ...
+----------------------------------------
+Formatting and creating a test file (f1)...
+FS::format()
+FS::formatDirectoryTable()
+FS::create(f1)
+Enter text (press Enter twice to finish):
+----------------------------------------
+Testing cp(f1,f2)...
+FS::cp(f1,f2)
+Expected output:
+name     size
+f1       16
+f2       16
+Actual output:
+name              type       accessrights     size
+f1                file       rw-              16
+f2                file       rw-              16
+Checking file contents
+Expected output:
+hej heja hejare
+hej heja hejare
+Actual output:
+hej heja hejare
+hej heja hejare
+... done cp(f1,f2)
+--------
+Try to cp to an existing file... cp(f1,f2)
+Expected output:
+... some kind of error message
+Actual output:
+Error: Copy file name allready exist
+Error: cp(f1,f2) failed, error code -1
+--------
+Try to cp from a non-existing file... cp(f4,f2)
+Expected output:
+... some kind of error message
+Actual output:
+Error: Original file doesnt exist
+Error: cp(f4,f2) failed, error code -1
+----------------------------------------
+Testing mv(f2,f3)...
+Expected output:
+name     size
+f1       16
+f3       16
+Actual output:
+name              type       accessrights     size
+f1                file       rw-              16
+f3                file       rw-              16
+Checking file contents of f3
+Expected output:
+hej heja hejare
+Actual output:
+hej heja hejare
+... done mv(f2,f3)
+--------
+Try to mv to an existing file... mv(f1,f3)
+Expected output:
+... some kind of error message
+Actual output:
+Error: Name is allready taken
+Error: mv(f1,f3) failed, error code -1
+--------
+Try to mv from a non-existing file... mv(f4,f3)
+Expected output:
+... some kind of error message
+Actual output:
+Error: file doesnt exist
+Error: mv(f4,f3) failed, error code -1
+----------------------------------------
+Testing rm(f1)...
+Expected output:
+name     size
+f3       16
+Actual output:
+name              type       accessrights     size
+f3                file       rw-              16
+--------
+Try to rm to a non-existing file... rm(f1)
+Expected output:
+... some kind of error message
+Actual output:
+ERROR: there is no file to remove
+Error: rm(f1) f1 failed, error code -1
+... done rm(f1)
+----------------------------------------
+Testing append(f1,f3)...
+execute create(f1)...
+FS::create(f1)
+Enter text (press Enter twice to finish):
+checking files...
+Expected output:
+name     size
+f1       23
+f3       16
+Actual output:
+name              type       accessrights     size
+f1                file       rw-              23
+f3                file       rw-              16
+Expected output:
+name     size
+f1       23
+f3       39
+Actual output:
+name              type       accessrights     size
+f1                file       rw-              23
+f3                file       rw-              39
+Checking file contents of f3
+Expected output:
+hej heja hejare
+hej heja hejare hejast
+Actual output:
+hej heja hejare
+hej heja hejare hejast
+... done append(f1,f3)
+----------------------------------------
+... Task 2 done
+================================================================================
+Exiting shell...
+root@MAC-KILLER-V2:/mnt/c/Users/felix/Desktop/OSLab2/lab2_code/lab2_code# ./test3
+FS::FS()... Creating file system
+Creating and starting shell...
+================================================================================
+\ / \ / \ / \ / \ / \ / \     new test session     / \ / \ / \ / \ / \ / \ / \ /
+================================================================================
+Starting test sequence...
+================================================================================
+Task 3 ...
+----------------------------------------
+Formatting and creating some test files (f1,f2)...
+FS::format()
+FS::formatDirectoryTable()
+FS::create(f1)
+Enter text (press Enter twice to finish):
+FS::create(f2)
+Enter text (press Enter twice to finish):
+----------------------------------------
+Testing mkdir(d1)...
+Expected output:
+name     type    size
+d1       dir     -
+f1       file    16
+f2       file    23
+Actual output:
+name              type       accessrights     size
+f1                file       rw-              16
+f2                file       rw-              23
+d1                dir        rwx              -
+--------
+Try to mkdir(f1)
+Expected output:
+... some kind of error message
+Actual output:
+ERROR: FOLDER ALLREADY EXIST
+Error: mkdir f1 failed, error code -1
+... done mkdir(d1)
+----------------------------------------
+Testing pwd and cd(d1)...
+checking pwd, starting in root directory...
+Expected output:
+/
+Actual output:
+/
+Executing cd(d1)...
+Expected output:
+/d1
+Actual output:
+/d1
+go back to root...
+Expected output:
+/
+Actual output:
+/
+--------
+Check that we can't do cd to a file, cd(f1)
+Expected output:
+... some kind of error message
+/
+Actual output:
+ERROR: THERE IS NO FILE WITH THE NAME OF: f1
+Error: cd f1 failed, error code -1
+/
+--------
+Check that we can't do cat on a directory, cat(d1)
+Expected output:
+... some kind of error message
+Actual output:
+ERROR: folder cant be printed
+Error: cat d1 failed, error code -1
+----------------------------------------
+Checking that cp works with a directory as destination
+Testing cp(f1,d1)...
+Expected output:
+/
+name     type    size
+d1       dir     -
+f1       file    16
+f2       file    23
+/d1
+name     type    size
+f1       file    16
+/
+Actual output:
+/
+name              type       accessrights     size
+f1                file       rw-              16
+f2                file       rw-              23
+d1                dir        rwx              -
+Im here
+/d1
+name              type       accessrights     size
+..                dir        rwx              -
+f1                file       rw-              16
+/
+----------------------------------------
+Checking that mv works with a directory as destination
+Testing mv(f2,d1)...
+Expected output:
+/
+name     type    size
+d1       dir     -
+f1       file    16
+f2       file    23
+/d1
+name     type    size
+f1       file    16
+f2       file    23
+/
+name     type    size
+d1       dir     -
+f1       file    16
+Actual output:
+/
+name              type       accessrights     size
+f1                file       rw-              16
+f2                file       rw-              23
+d1                dir        rwx              -
+Im going to press cp f2 Into: d1
+Im here
+/d1
+name              type       accessrights     size
+..                dir        rwx              -
+f1                file       rw-              16
+f2                file       rw-              23
+/
+name              type       accessrights     size
+f1                file       rw-              16
+d1                dir        rwx              -
+----------------------------------------
+... Task 3 done
+================================================================================
+Exiting shell...
+root@MAC-KILLER-V2:/mnt/c/Users/felix/Desktop/OSLab2/lab2_code/lab2_code# ./test4
+FS::FS()... Creating file system
+Creating and starting shell...
+================================================================================
+\ / \ / \ / \ / \ / \ / \     new test session     / \ / \ / \ / \ / \ / \ / \ /
+================================================================================
+Starting test sequence...
+================================================================================
+Task 4 ...
+----------------------------------------
+Testing mkdir and cd with absolut and relative paths...
+Starting with empty disk...
+FS::format()
+FS::formatDirectoryTable()
+mkdir(/d1), mkdir(d1/d2), mkdir(d1/d2/../d3)...
+Expected output:
+/
+name     type    size
+d1       dir     -
+-----
+/d1
+name     type    size
+d2       dir     -
+d3       dir     -
+Actual output:
+/
+name              type       accessrights     size
+d1                dir        rwx              -
+-----
+/d1
+name              type       accessrights     size
+..                dir        rwx              -
+d2                dir        rwx              -
+d3                dir        rwx              -
+----------------------------------------
+Testing cp/mv with absolut and relative paths...
+cd(d2), create(f1) and create(f2)...
+FS::create(f1)
+Enter text (press Enter twice to finish):
+FS::create(f2)
+Enter text (press Enter twice to finish):
+checking files...
+Expected output:
+/d1/d2
+name     type    size
+f1       file    16
+f2       file    23
+Actual output:
+/d1/d2
+name              type       accessrights     size
+..                dir        rwx              -
+f1                file       rw-              16
+f2                file       rw-              23
+-----
+cp(f1,f3)...
+FS::cp(f1,f3)
+cp(f2,f4)...
+FS::cp(f2,f4)
+cp(f1,..)...
+Im here
+cp(f2,/d1)...
+Im here
+WE ARE HERE
+mv(f3,..)...
+Im going to press cp f3 Into: ..
+Im here
+mv(f4,/d1)...
+Im going to press cp f4 Into: /d1
+Im here
+WE ARE HERE
+Expected output:
+/d1/d2
+name     type    size
+f1       file    16
+f2       file    23
+Actual output:
+/d1/d2
+name              type       accessrights     size
+..                dir        rwx              -
+f1                file       rw-              16
+f2                file       rw-              23
+-----
+Expected output:
+/d1
+name     type    size
+d2       dir     -
+d3       dir     -
+f1       file    16
+f2       file    23
+f3       file    16
+f4       file    23
+Actual output:
+/d1
+name              type       accessrights     size
+..                dir        rwx              -
+d2                dir        rwx              -
+d3                dir        rwx              -
+f1                file       rw-              16
+f2                file       rw-              23
+f3                file       rw-              16
+f4                file       rw-              23
+----------------------------------------
+... Task 4 done
+================================================================================
+Exiting shell...
+root@MAC-KILLER-V2:/mnt/c/Users/felix/Desktop/OSLab2/lab2_code/lab2_code# ./test5
+FS::FS()... Creating file system
+Creating and starting shell...
+================================================================================
+\ / \ / \ / \ / \ / \ / \     new test session     / \ / \ / \ / \ / \ / \ / \ /
+================================================================================
+Starting test sequence...
+================================================================================
+Task 5 ...
+----------------------------------------
+Testing access rights...
+Starting with empty disk...
+Use "/" as test dir...
+FS::format()
+FS::formatDirectoryTable()
+FS::create(f1)
+Enter text (press Enter twice to finish):
+FS::create(f2)
+Enter text (press Enter twice to finish):
+checking start files...
+Expected output:
+/
+name     type    accessrights    size
+f1       file    rw-     16
+f2       file    rw-     23
+Actual output:
+/
+name              type       accessrights     size
+f1                file       rw-              16
+f2                file       rw-              23
+-----
+chmod(2,f1)...
+FS::chmod(2,f1)
+Access rights updated successfully.
+chmod(4,f2)...
+FS::chmod(4,f2)
+Access rights updated successfully.
+Expected output:
+/
+name     type    accessrights    size
+f1       file    -w-     16
+f2       file    r-      23
+Actual output:
+name              type       accessrights     size
+f1                file       -w-              16
+f2                file       r--              23
+cat(f1)...
+Expected output:
+... some kind of error message
+Actual output:
+Error: Read access denied.
+-----
+append(f1,f2)...
+Expected output:
+... some kind of error message
+Actual output:
+Error: Read access denied for f1.
+-----
+append(f2,f1)...
+Expected output:
+name     type    accessrights    size
+f1       file    -w-     39
+f2       file    r-      23
+Actual output:
+name              type       accessrights     size
+f1                file       -w-              39
+f2                file       r--              23
+----------------------------------------
+... Task 5 done
+================================================================================
+Exiting shell...
+root@MAC-KILLER-V2:/mnt/c/Users/felix/Desktop/OSLab2/lab2_code/lab2_code#
