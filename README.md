@@ -19,6 +19,9 @@ This lab focuses on understanding processes and threads, their communication, sy
 
 
 
+
+
+
 ## Lab 2: File Systems
 
 This lab involves working with file systems, focusing on their structure, management, and performance optimization.
