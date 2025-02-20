@@ -313,8 +313,7 @@ To run the file system project locally:
 ## Contributors
 
 - **Felix Cenusa**
-- **Yamen Chams**  
-    BTH Software Engineers
+- **Yamen Chams** 
 
 ## Additional Resources
 
