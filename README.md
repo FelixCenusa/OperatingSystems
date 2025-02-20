@@ -1,76 +1,334 @@
-# OperatingSystems
-Operating Systems projects
+# Operating Systems Lab Projects
 
-(PDF reports avaliable in this repo)
-## Lab 1: Processes, Threads, and Memory Systems
+## TL;DR
 
-This lab focuses on understanding processes and threads, their communication, synchronization, and the impact of memory systems on performance.
+### Lab 1: Processes, Threads, and Memory Systems
+- **Focus:** Processes, threads, and memory systems in operating systems.
+- **Highlights:**
+    - **Multithreading:** Squared thread IDs, synchronized transactions with semaphores, and deadlock-free dining philosophers.
+    - **Parallel Processing:** Achieved 75% speedup in matrix multiplication and 70% speedup in matrix initialization/calculation.
+    - **Memory Management:** Implemented FIFO, LRU, and Optimal page replacement algorithms.
+- **Implementation:** Written in C with detailed performance analyses.
+- **PDF reports available in this repository**
 
-### Part 1: Task Solutions
-- **Task 7**: Introduced `squaredId` in `threadArgs`, squared each thread's ID, and used `pthread_join` to wait for all threads to complete and print the squared IDs.
-- **Task 9**: Created multiple threads to perform transactions using semaphores to ensure data integrity and atomicity.
-- **Task 11**: Implemented a solution to avoid deadlocks in the dining philosophers problem by ensuring both forks/chopsticks are picked up simultaneously.
-- **Task 13**: Achieved a 75% speedup in matrix multiplication through parallelization.
-- **Task 14**: Achieved a 70% speedup in matrix initialization and calculation through parallelization.
+### Lab 2: File Systems
+- **File System Lab:** Build a FAT-based file system supporting standard file and directory operations.
+- **Key Operations:** Create, delete, copy, move files/directories, manage disk space, and enforce permissions.
+- **Core Components:**
+    - **FAT:** Manages fixed-size disk blocks.
+    - **Directory Tables:** Organizes file and folder metadata.
+- **Disk Simulation:** Uses a simulated disk via a `Disk` class for portability.
+- **Documentation:** Detailed explanations and performance analysis are provided in the PDF report within the repository.
+- **PDF reports available in this repository**
 
-### Part 2: Task Solutions
-- **Task 17**: Implemented the FIFO page replacement algorithm and verified its correctness against known results.
+---
+
+## Table of Contents
+
+### Lab 1: Processes, Threads, and Memory Systems
+- [Project Overview](#project-overview)
+- [Lab Tasks](#lab-tasks)
+    - [Part 1: Processes and Threads](#part-1-processes-and-threads)
+    - [Part 2: Memory Systems](#part-2-memory-systems)
+- [Detailed Implementation](#detailed-implementation)
+- [Performance Results](#performance-results)
+- [Discussion and Reflections](#discussion-and-reflections)
+- [Getting Started](#getting-started)
+- [Contributors](#contributors)
+- [Additional Resources](#additional-resources)
+
+### Lab 2: File Systems
+- [Project Overview](#project-overview-1)
+- [System Design](#system-design)
+    - [Overview](#overview-1)
+    - [Key Components](#key-components-1)
+    - [Disk Management](#disk-management-1)
+- [Implementations](#implementations-1)
+    - [Formatting the Disk](#formatting-the-disk-1)
+    - [File Operations](#file-operations-1)
+    - [Directory Management](#directory-management-1)
+    - [Copying and Moving Files](#copying-and-moving-files-1)
+    - [Permissions](#permissions-1)
+- [Data Structures](#data-structures-1)
+    - [File Allocation Table (FAT)](#file-allocation-table-fat-1)
+    - [Directory Tables](#directory-tables-1)
+- [Getting Started](#getting-started-1)
+- [Contributors](#contributors-1)
+- [Additional Resources](#additional-resources-1)
+
+
+## Project Overview Lab 1
+
+This lab focuses on practical implementations and performance analysis of various systems programming tasks. It covers:
+
+- **Multithreading:** Creating, synchronizing, and managing threads.
+- **Parallel Processing:** Achieving significant speedups in computational tasks.
+- **Memory Management:** Implementing and comparing page replacement algorithms (FIFO, LRU, and Optimal).
+
+The project not only aims to solve specific problems but also deepens the understanding of how low-level system operations work.
+
+## Lab Tasks
+
+### Part 1: Processes and Threads
+
+In this part, the focus is on understanding thread operations and the benefits of parallel execution.
+
+- **Task 7: Squared Thread IDs**
+    
+    - **What We Did:**
+        - Introduced a new variable `squaredId` in the `threadArgs` structure.
+        - Each thread computes the square of its ID.
+        - Used `pthread_join` to wait for all threads to complete and to collect their results.
+- **Task 9: Data Integrity with Semaphores**
+    
+    - **What We Did:**
+        - Created multiple threads to perform transactions.
+        - Applied semaphore functions (`sem_init`, `sem_wait`, and `sem_post`) to lock the data during each transaction.
+        - Ensured data integrity and atomicity in a manner similar to SQL transactions.
+- **Task 11: Dining Philosophers and Deadlock Avoidance**
+    
+    - **What We Did:**
+        - Implemented a strategy where each philosopher waits until both forks (or chopsticks) are available.
+        - Ensured that both resources are locked simultaneously, effectively avoiding deadlocks.
+- **Task 13: Parallel Matrix Multiplication**
+    
+    - **What We Did:**
+        - Parallelized matrix multiplication.
+        - **Performance:** Reduced execution time from 5.1 seconds (sequential) to 2.9 seconds, achieving a 75% speedup.
+- **Task 14: Parallel Matrix Initialization and Calculation**
+    
+    - **What We Did:**
+        - Parallelized both matrix initialization and computation.
+        - **Performance:** Reduced execution time from 5.1 seconds (sequential) to 3.0 seconds, achieving a 70% speedup.
+        - **Note:** The initialization task showed less benefit due to thread overhead; however, the multiplication portion greatly improved overall performance.
+
+### Part 2: Memory Systems
+
+This section demonstrates various page replacement strategies to handle virtual memory efficiently.
+
+- **Task 17: FIFO Page Replacement**
+    
+    - **What We Did:**
+        - Implemented the FIFO algorithm by reading a sample file and cycling through a fixed number of physical pages.
+        - Incremented a counter (modulo the number of pages) to decide which page to replace.
+        - **Observation:** The simple FIFO approach resulted in a high number of page faults.
+- **Task 20: LRU Page Replacement**
+    
+    - **What We Did:**
+        - Developed an LRU algorithm using a circular linked list.
+        - When the memory is full, the least recently used page is replaced.
+        - On access, a page’s “timer” is reset by moving it to the end of the list.
+- **Task 23: Optimal (Belady’s) Page Replacement**
+    
+    - **What We Did:**
+        - Implemented the Optimal algorithm with the aid of a linked list.
+        - Added a function (`leastCommonInFuture`) to determine which page will not be used for the longest period in the future, then replaced that page.
+        - Ensured the algorithm returns correct results when benchmarked against known outcomes.
+
+## Detailed Implementation
+
+The project is implemented in C with a focus on multithreading and memory management:
+
+- **Thread Management:**
+    
+    - Threads are created using `pthread_create` and synchronized with `pthread_join`.
+    - Semaphores are used to ensure that critical sections (e.g., during transactions) are executed atomically.
+- **Memory Management:**
+    
+    - Three different page replacement strategies were implemented:
+        - **FIFO:** A straightforward approach that can lead to many page faults.
+        - **LRU:** Uses a circular linked list to track page usage and manage replacement.
+        - **Optimal:** Employs predictive logic (via `leastCommonInFuture`) to select the page that will not be needed for the longest period.
+    - The use of linked lists in LRU and Optimal strategies avoids the limitations of static array implementations.
+- **Performance Metrics:**
+    
+    - Benchmarks illustrate the benefits of parallelization in reducing execution times.
+    - Comparisons between sequential and parallel implementations provide insights into the trade-offs of thread overhead versus computational gains.
+
+## Performance Results
+
+- **Matrix Multiplication (Task 13):** 75% speedup (2.9 sec vs. 5.1 sec).
+- **Matrix Initialization & Calculation (Task 14):** 70% speedup (3.0 sec vs. 5.1 sec).
+- **Page Replacement Algorithms:**
+    - All implementations produced correct outputs compared to expected benchmarks, though FIFO was less efficient due to its simplistic design.
+
+## Discussion and Reflections
+
+This lab was a valuable learning experience:
+
+- **Learning Curve:**
+    
+    - Transitioning from C++ to C introduced challenges due to differences in syntax and memory management.
+    - Working with low-level threading and synchronization deepened our understanding of process management.
+- **Parallel Processing:**
+    
+    - Demonstrated significant performance gains through parallelization, even when considering the overhead of thread creation.
+- **Memory Management:**
+    
+    - Implementing and comparing multiple page replacement algorithms provided practical insights into system performance trade-offs.
+    - While simpler algorithms like FIFO are easier to implement, more sophisticated approaches (LRU and Optimal) yield better performance in demanding scenarios.
+
+## Getting Started
+
+To run the project locally:
+
+1. **Clone the Repository:**
+    
+    bash
+    
+    Copy
+    
+    `git clone https://your-repo-url.git`
+    
+2. **Compile the Code:**
+    
+    - Ensure you have a C compiler with pthread support. For example:
+        
+        bash
+        
+        Copy
+        
+        `gcc -pthread -o lab1 main.c`
+        
+3. **Run the Executable:**
+    
+    bash
+    
+    Copy
+    
+    `./lab1`
+    
+4. **Review the PDF Report:**
+    
+    - For detailed explanations, performance analysis, and further insights, refer to the PDF reports available in the repository.
+
+## Contributors
+
+- **Felix Beniamin Cenusa**
+- **Yamen Chams**
+
+## Additional Resources
+
+- Detailed PDF Report on Solutions for Part 1 and Part 2 avaliable in this repo
 
 
 
 
+## Project Overview of Lab 2
 
+The goal of this lab is to design and implement a robust file system that supports essential file and directory operations, enforces permissions, and manages disk space through efficient allocation and deallocation of fixed-size blocks. The system is designed to be portable and demonstrable on any platform using a simulated disk.
 
+## System Design
 
-## Lab 2: File Systems
+### Overview
 
-This lab involves working with file systems, focusing on their structure, management, and performance optimization.
+The file system utilizes a FAT (File Allocation Table) to manage storage blocks and directory tables to organize files and folders. The root directory (`/`) forms the base of the hierarchy, supporting subdirectories and standard file operations. Disk space is divided into fixed-size blocks, which are allocated or freed as needed.
 
-### Report on File System Implementation
+### Key Components
 
-#### 1. Introduction
-The purpose of this lab was to create a file system that supports common operations like creating, deleting, moving, and copying files and directories. The system also enforces permissions and manages disk space. This report explains how we built the system, the decisions we made along the way, and how it handles different tasks.
+- **Directory Entries (`dir_entry`):**  
+    Store metadata such as file/folder name, size, type, and permissions.
+- **FAT (File Allocation Table):**  
+    Tracks which disk blocks are free, in use, or mark the end of a file.
+- **Directory Tables:**  
+    Organize files and subdirectories; the root directory holds top-level entries, while subdirectories manage their own contents.
 
-#### 2. System Design
+### Disk Management
 
-##### 2.1 Overview
-The file system uses a FAT (File Allocation Table) to manage storage blocks and directory tables to organize files and folders. The root directory (/) is the base of the hierarchy, and the system supports subdirectories and basic file operations. Disk space is split into fixed-size blocks, and these are allocated or freed as needed.
+The file system simulates disk operations using a `Disk` class that reads and writes fixed-size blocks. This abstraction ensures that the system can run on any platform while simplifying data storage and access.
 
-##### 2.2 Key Components
-- **Directory Entries (dir_entry)**: Store file/folder metadata (name, size, type, etc.).
-- **FAT**: Keeps track of which blocks are free, in use, or the end of a file.
-- **Directory Tables**: The root directory holds all top-level files, while the current directory table tracks where the user is working.
+## Implementations
 
-##### 2.3 Disk Management
-The system reads and writes blocks to a simulated disk using the Disk class. Each block is a fixed size, which simplifies how data is stored and accessed.
+### Formatting the Disk
 
-#### 3. Implementations
+The `format` function initializes the file system:
 
-##### 3.1 Formatting the Disk
-The format function sets up the system by clearing the FAT and directory tables. It initializes all blocks as free (except for the root and FAT blocks) so the disk is ready for use and zeros out all the data on the disk.
+- Clears the FAT and directory tables.
+- Marks all blocks as free (except reserved blocks for the root and FAT).
+- Zeros out all disk data, providing a clean slate for subsequent operations.
 
-##### 3.2 File Operations
-- **create**: Adds a new file, allocating disk blocks and linking them in the FAT if the data doesn't fit in one block. File content is stored in these blocks, and metadata is added to the directory table.
-- **cat**: Reads a file’s content and prints it, checking for read permissions first.
-- **ls**: Lists the contents of the current directory, including names, sizes, types, and permissions.
+### File Operations
 
-##### 3.3 Directory Management
-- **mkdir**: Creates a new directory, initializing its table with `..` entries that point to the parent directory. Works with relative or absolute paths.
-- **cd**: Changes the current directory by updating the directory table to match the target location. Can use local or absolute paths.
-- **pwd**: Prints the full path of the current directory by traversing back to the root temporarily and printing the traversed path.
+- **create:**  
+    Adds a new file by allocating disk blocks and linking them via the FAT. File content is distributed across blocks, and metadata is recorded in the directory table.
+- **cat:**  
+    Reads and displays file content after verifying read permissions.
+- **ls:**  
+    Lists the contents of the current directory, showing names, sizes, types, and permissions.
 
-##### 3.4 Copying and Moving Files
-- **cp**: Copies a file to a folder or another file, allocating new blocks and writing the copied data. Metadata like size and permissions is duplicated.
-- **mv**: Renames or moves a file.
+### Directory Management
 
-##### 3.5 Permissions
-- **chmod**: Updates a file or directory’s permissions (read, write, execute).
-- **Checks**: Operations like `cat` and `append` ensure the required permissions are met.
+- **mkdir:**  
+    Creates a new directory and initializes its table with entries (including `..` for the parent directory), supporting both relative and absolute paths.
+- **cd:**  
+    Changes the current directory by updating the directory table to match the target location.
+- **pwd:**  
+    Prints the full path of the current directory by traversing back to the root.
 
-#### 4. Data Structures
+### Copying and Moving Files
 
-##### 4.1 FAT
-The FAT maps each block to the next block in a file or marks it as free (FAT_FREE) or the end of a file (FAT_EOF).
+- **cp:**  
+    Copies a file to another location by allocating new blocks and duplicating its data and metadata.
+- **mv:**  
+    Renames or moves a file within the file system.
 
-##### 4.2 Directory Tables
-Directories use tables of `dir_entry` structs to organize their contents. Each entry holds a file or folder’s metadata, such as its name, size, and permissions.
+### Permissions
+
+- **chmod:**  
+    Updates permissions (read, write, execute) for files or directories.
+- **Permission Checks:**  
+    File operations like `cat` and `append` enforce permission requirements to ensure secure access.
+
+## Data Structures
+
+### File Allocation Table (FAT)
+
+The FAT maps each disk block to the next block in a file:
+
+- Marks blocks as free (`FAT_FREE`), in use, or as the end of a file (`FAT_EOF`).
+
+### Directory Tables
+
+Directories are represented as tables of `dir_entry` structures that capture metadata (name, size, permissions, etc.) and organize the file system's hierarchical structure.
+
+## Getting Started
+
+To run the file system project locally:
+
+1. **Clone the Repository:**
+    
+    bash
+    
+    Copy
+    
+    `git clone https://your-repo-url.git`
+    
+2. **Compile the Code:**
+    - Ensure you have a C compiler installed. For example:
+        
+        bash
+        
+        Copy
+        
+        `gcc -o lab2 filesys.c`
+        
+3. **Run the Executable:**
+    
+    bash
+    
+    Copy
+    
+    `./lab2`
+    
+4. **Review the PDF Report:**
+    - Detailed explanations and performance analyses are available in the PDF report within this repository.
+
+## Contributors
+
+- **Felix Cenusa**
+- **Yamen Chams**  
+    BTH Software Engineers
+
+## Additional Resources
+
+- Detailed PDF Report on File System Implementation avaliable in this repo

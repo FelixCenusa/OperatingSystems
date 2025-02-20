@@ -178,4 +178,4 @@ To run the project locally:
 
 ## Additional Resources
 
-- Detailed PDF Report on Solutions for Part 1 and Part 2 _(update this link as necessary)_
+- Detailed PDF Report on Solutions for Part 1 and Part 2 avaliable in this repo
